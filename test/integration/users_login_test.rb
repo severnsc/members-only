@@ -38,4 +38,12 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 		get signup_path
 		assert flash.empty?
 	end
+
+	test "logout user" do
+		log_in_as(@user)
+		delete logout_path
+		assert_redirected_to login_url
+		follow_redirect!
+		assert_template 'sessions/new'
+	end
 end

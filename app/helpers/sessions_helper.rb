@@ -4,6 +4,12 @@ module SessionsHelper
 		session[:user_id] = user.id
 	end
 
+	def log_out(user)
+		user.forget
+		cookies.delete(:user_id)
+		cookies.delete(:remember_token)
+	end
+
 	def remember(user)
 		user.remember
 		cookies.permanent.signed[:user_id] = user.id

@@ -16,6 +16,9 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
+		user = User.find_by(id: session[:user_id])
+		log_out(user)
+		redirect_to login_path
 	end
 
 end
