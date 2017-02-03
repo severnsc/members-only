@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :logged_in_user, only: [:show]
+	before_action :logged_in_user, only: [:show, :index]
 
 	def new
 		@user = User.new
@@ -18,6 +18,10 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find_by(id: params[:id])
+	end
+
+	def index
+		@users = User.all
 	end
 
 	private

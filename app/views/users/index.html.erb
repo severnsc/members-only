@@ -1,0 +1,10 @@
+<% provide(:title, "All users") %>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h1>Users</h1>
+		<% @users.each do |user| %>
+			<%= link_to user.name, user_path(user) %>
+			<hr>
+		<% end %>
+	</div>
+</div>
