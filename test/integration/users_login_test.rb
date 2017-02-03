@@ -27,4 +27,15 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 		follow_redirect!
 		assert_template 'users/show'
 	end
+
+	test "that the flash only displays on the login page after bad login attempt" do
+		get login_path
+		assert_template 'sessions/new'
+		post login_path, params: { session: { email: "",
+											  password: ""}}
+		assert_not flash.empty?
+		assert_template 'sessions/new'
+		get signup_path
+		assert flash.empty?
+	end
 end
