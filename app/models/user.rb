@@ -8,6 +8,7 @@ class User < ApplicationRecord
 					  uniqueness: {case_sensitive: false}
 	validates :name, presence: true, length: {maximum: 60}, uniqueness: true
 	has_secure_password
+	has_many :posts
 
 	def User.new_token
 		SecureRandom.urlsafe_base64
