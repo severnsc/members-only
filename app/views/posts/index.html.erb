@@ -1,2 +1,15 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h2>All posts</h2>
+		<% @posts.each do |post| %>
+			<div class="user_post">
+				<p>
+					<%= post.body %>
+				</p>
+				<h3>
+					<%= link_to post.user.name, post.user %>
+				</h3>
+			</div>
+		<% end %>
+	</div>
+</div>

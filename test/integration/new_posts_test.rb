@@ -32,10 +32,11 @@ class NewPostsTest < ActionDispatch::IntegrationTest
 			post posts_path, params: { post: { body: "This is some text.",
 																					user_id: @user.id}}
 		end
-		assert_redirected_to user_path(@user)
+		assert_redirected_to posts_path
 		follow_redirect!
-		assert_template 'users/show'
+		assert_template 'posts/index'
 		assert_not flash.empty?
+		assert_select 'div.user_post'
 	end
 
 end

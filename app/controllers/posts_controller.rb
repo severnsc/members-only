@@ -9,13 +9,14 @@ class PostsController < ApplicationController
   	@post = Post.new(post_params)
   	if @post.save
   		flash[:success] = "Post added!"
-  		redirect_to current_user
+  		redirect_to posts_path
   	else
   		render 'new'
   	end
   end
 
   def index
+  	@posts = Post.all.order('posts.created_at DESC')
   end
 end
 
