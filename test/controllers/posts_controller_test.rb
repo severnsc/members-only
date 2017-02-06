@@ -20,4 +20,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_path
   end
 
+  test "should fetch index" do
+    get posts_path
+    assert_template 'posts/index'
+  end
+
 end

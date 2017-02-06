@@ -6,9 +6,11 @@
 				<p>
 					<%= post.body %>
 				</p>
+				<% if current_user %>
 				<h3>
 					<%= link_to post.user.name, post.user %>
 				</h3>
+				<% end %>
 			</div>
 		<% end %>
 	</div>
