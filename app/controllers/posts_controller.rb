@@ -8,7 +8,8 @@ class PostsController < ApplicationController
   def create
   	@post = Post.new(post_params)
   	if @post.save
-  		#if it's successful stuff
+  		flash[:success] = "Post added!"
+  		redirect_to current_user
   	else
   		render 'new'
   	end
