@@ -2,5 +2,12 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<h1><%= @user.name %></h1>
+		<% @posts.each do |post| %>
+			<div class="user_post">
+				<p>
+					<%= post.body %>
+				</p>
+			</div>
+		<% end %>
 	</div>
 </div>
